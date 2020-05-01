@@ -5,6 +5,8 @@ const config = require('./config')
 const response = require('./response')
 const jrrpResult = require('./jrrp')
 const help = require('./help')
+// const fs = require('fs')
+const deck = require('./deck.json')
 
 const solveGeneralMsg = async (data, msg, name) => {
 
@@ -191,6 +193,20 @@ const solveGeneralMsg = async (data, msg, name) => {
                 if (msg.params[0] === 'coc') {
                     msg.params[0] = 'coc7'
                 }
+
+                //抽卡这部分单独
+                if (msg.params[0] === 'draw') {
+                    //枚举牌堆
+                    decks = deck.deck
+                    deckStr = ""
+                    decks.forEach(d => {
+                        deckStr += '/' + d
+                    })
+                    deckStr = deckStr.slice(1)
+
+                    return help['draw'] + deckStr
+                }
+
                 if (help[msg.params[0]]) {
                     return help[msg.params[0]]
                 } else {
@@ -199,6 +215,14 @@ const solveGeneralMsg = async (data, msg, name) => {
                     )
                 }
             }
+        }
+
+        //显示版本号
+        if (msg.order === '.v' || msg.order === '.ver') {
+            return utils.stringTranslate(
+                'doVerInfo',
+                [config.version, config.version]
+            )
         }
 
         //关于属性的操作
@@ -557,6 +581,41 @@ const solveGeneralMsg = async (data, msg, name) => {
                 [reason ? '由于' + reason : '',
                     name, prop, ret, val, description,
                 ]
+            )
+        }
+
+        //抽卡
+        if (msg.order === '.draw') {
+            //如果没输入牌堆名
+            if (!msg.params[0]) {
+                return utils.stringTranslate('errInvalidParam')
+            }
+            //如果没有这个牌堆的话
+            if (msg.params[0] === 'deck' || !deck[msg.params[0]]) {
+                return utils.stringTranslate('errNoDeck')
+            }
+            let targetDeck = deck[msg.params[0]],
+                times = 1,
+                resString = ''
+            if (msg.params[1]) {
+                times = parseInt(msg.params[1])
+                if (!times) {
+                    return utils.stringTranslate('errInvalidParam')
+                }
+                if (times > config.maxDraw) {
+                    return utils.stringTranslate('errTooManyDraw')
+                }
+            }
+
+            for (let i = 0; i < times; i++) {
+                res = utils.randInt(1, targetDeck.length + 1)
+                //显然coc的索引是从1开始的, 而数组的索引是从0开始的..
+                resString += `1d${targetDeck.length} = ${res}\n${targetDeck[res - 1]}\n`
+            }
+
+            return utils.stringTranslate(
+                'doDraw',
+                [name, msg.params[0], resString]
             )
         }
     }

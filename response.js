@@ -19,6 +19,8 @@ const response = {
     errTooLargeNumber: '呀——数字太大,$$数不过来了喵w~', //数字太大
     errTooManyBonus: '唔——扔太多也没什么意义呀喵w~', //奖励(惩罚)骰太多
     errNoProp: '呜喵w~ 似乎还没有设置$0喵w~', //未设置指定属性 $0属性名
+    errNoDeck: '$$这里并没有这个牌堆喵w~', //未找到牌堆
+    errTooManyDraw: '1,2,3,... 太多了喵w~', //抽卡太多
     errOtherErr: '诶.. $$感觉哪里不太对喵w~', //其他错误
 
     //bot的状态(.bot消息)
@@ -29,6 +31,8 @@ const response = {
 
     //...............................各种操作...................................
     doAtBot: '唔喵www~', //当@骰娘时
+    doVerInfo: '当前版本: v$0\n\
+版本说明请见: https://github.com/Enzymii/Nyabot/blob/master/ver$1.md',
     //hitokoto的消息
     //$0 hitokoto内容
     //$1 hitokoto出处
@@ -73,6 +77,8 @@ SAN减少了$5点, 还剩$6点喵w~',
     doEnhance: '$0 $1进行$2增强/成长检定喵w~: 1d100=$3/$4 ',
     onEnhanceOk: '成功喵w~\n$0提高了1d10=$1点, 当前值为$2点喵w~',
     onEnhanceFail: '失败喵w~\n属性值并没有发生变化喵w~',
+    //抽卡结果
+    doDraw: '来看看$0抽$1的结果喵w:\n $2',
 
     //属性相关
     propSet: '$$已经把属性记下来了喵w~', //设置属性

@@ -8,12 +8,14 @@ const solvePrivateMsg = async (data, msg) => {
 
     // let userId = data.user_id.toString()
 
-    let name = data.sender.nickname
+    let name, nameA
     try {
-        name = await utils.prop.getOne(
+        nameA = await utils.prop.getOne(
             'default', data.user_id, 'name'
         )
     } catch (e) {} //找不到也不用报错...
+
+    name = nameA || data.sender.nickname
 
     let generalResult = await generalMsg(data, msg, name)
     if (generalResult !== '') {

@@ -216,12 +216,14 @@ const solveGroupMsg = async (data, msg) => {
                         "chatNotExist"
                     )
                 }
-            } else if (msg.params[0] === 'clr') {
-                await utils.dbWork.delData(groupId, 'chat', {})
-                return utils.stringTranslate(
-                    "chatClr"
-                )
-            } else if (msg.params[0] === 'list') {
+            }
+            // else if (msg.params[0] === 'clr') {
+            //     await utils.dbWork.delData(groupId, 'chat', {})
+            //     return utils.stringTranslate(
+            //         "chatClr"
+            //     )
+            // } //clr这个功能破坏性太大 还是删了叭
+            else if (msg.params[0] === 'list') {
                 //查找所有关键词
                 let chats = await utils.dbWork.findData(
                     groupId, 'chat', {}
