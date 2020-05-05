@@ -20,6 +20,8 @@ const addData = (dbName, dbCollection, dbData) => {
                     }
                     resolve(res)
                 })
+
+            db.close();
         })
     })
 
@@ -46,6 +48,8 @@ const updData = (dbName, dbCollection, dbQuery, dbData) => {
                     resolve(res)
                 }
             )
+
+            db.close();
         })
     })
     dbUpdData.catch(e => console.log(e))
@@ -72,6 +76,8 @@ const delData = (dbName, dbCollection, dbData) => {
                     resolve(res)
                 }
             )
+
+            db.close();
         })
     })
 
@@ -97,6 +103,8 @@ const findData = (dbName, dbCollection, dbData) => {
                 }
                 resolve(res)
             })
+
+            db.close();
         })
     })
 

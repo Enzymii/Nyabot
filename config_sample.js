@@ -35,7 +35,7 @@ const config = {
     //切换规则这事属于TODO
     defaultRule: 0,             //默认规则的编号(参见rules.js)
 
-    version: '2.1.0',           //版本号
+    version: '2.1.1',           //版本号
 }
 
 module.exports = config

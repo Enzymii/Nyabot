@@ -174,6 +174,39 @@ const solveGeneralMsg = async (data, msg, name) => {
             )
         }
 
+        //.r [1dX] [原因] 的简化形式.rd [X] [原因]
+        //X不填则使用默认
+        if (msg.order === '.rd') {
+            let defaultDiceNum = parseInt(config.defaultDice.slice(2)),
+                diceNum = defaultDiceNum,
+                reason = ''
+
+            let tmp = parseInt(msg.params[0])
+
+            //如果提供了X的话
+            if(tmp) {
+                diceNum = parseInt(msg.params[0])
+                reason = msg.params[1]
+            } else {
+                reason = msg.params[0]
+            }
+
+            let res = utils.dice('1d' + diceNum, 0, false)
+
+            if (isNaN(res.val)) {
+                return utils.stringTranslate(res.str)
+            }
+
+            return utils.stringTranslate(
+                "doDice",
+                [
+                    name,
+                    reason || '',
+                    res.str
+                ]
+            )
+        }
+
         //显示帮助
         if (msg.order === '.help') {
             //没有具体查询就返回主要的菜单
