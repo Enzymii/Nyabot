@@ -13,6 +13,8 @@ const config = {
 
     //mongodb的url
     dbUrl: "mongodb://127.0.0.1",
+    //coolq文件夹
+    cqpath: "/home/xxx/coolq",
 
     //bot自己的QQ
     botQ: 999999999,
@@ -23,6 +25,9 @@ const config = {
 
     //muda ora最大的重复次数
     maxRepeatTimes: 255,
+
+    //saucenao的相似度阈值(低于这个阈值的结果将被忽略)
+    sauceSimilarity: 90.0,
 
     //dice
     maxCoc: 10,                 //人物作成最大值
@@ -35,7 +40,7 @@ const config = {
     //切换规则这事属于TODO
     defaultRule: 0,             //默认规则的编号(参见rules.js)
 
-    version: '2.1.1',           //版本号
+    version: '2.2.0',           //版本号
 }
 
 module.exports = config

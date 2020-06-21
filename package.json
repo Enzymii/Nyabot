@@ -19,7 +19,9 @@
   "license": "ISC",
   "dependencies": {
     "cqhttp": "^1.2.0",
+    "file-type": "^14.6.2",
     "jsdom": "^16.2.2",
-    "mongodb": "^3.4.1"
+    "mongodb": "^3.4.1",
+    "saucenao": "0.0.2"
   }
 }

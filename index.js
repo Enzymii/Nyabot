@@ -1,11 +1,11 @@
 const cq = require('cqhttp')
-const config = require('./config')
-const utils = require('./utils')
-const response = require('./response')
+const config = require('./src/config')
+const utils = require('./src/utils')
+const response = require('./src/response')
 
-const groupMsg = require('./groupMsg')
-const privateMsg = require('./privateMsg')
-const request = require('./request')
+const groupMsg = require('./src/groupMsg')
+const privateMsg = require('./src/privateMsg')
+const request = require('./src/request')
 
 const bot = new cq({
     apiRoot: 'http://' + config.host + ':' + config.sendPort

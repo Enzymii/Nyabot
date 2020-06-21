@@ -5,11 +5,15 @@ const https = require('https')
 const stack = require('./stack')
 const querystring = require('querystring')
 
+const saucenao = require('saucenao')
+const filetype = require('file-type')
+
 const config = require('./config')
 const db = require('./dbWork')
 const prop = require('./propWork')
 const response = require('./response')
 const rules = require('./rules')
+const fs = require('fs')
 
 let utils = {}
 
@@ -53,6 +57,7 @@ const msgConvert = text => {
 
         //指令串全转为小写
         text = text.toLowerCase()
+        text = text.replace('[\f\n\r\t\v]', '') //把除了空格的空白字符删掉
 
         //把开头的.或者。替换为.
         text = text.replace(order, '.')
@@ -389,7 +394,6 @@ utils.dice = dice
 //检定
 //因为san check和属性检定有相同的地方
 //而且要进行相似的非法值判断 所以写在一起
-//curVal
 //返回结果的数字(出错也就是onCheckResult的编号)
 const check = (rule, curVal, maxVal) => {
     maxVal = parseInt(maxVal)
@@ -511,5 +515,32 @@ const repeatWord = (word, times) => {
 }
 utils.repeatWord = repeatWord
 
+
+//saucenao搜图功能
+//返回一个相似度大于阈值的列表
+const getSauced = async (img) => {
+    let cqimg = config.cqpath + '/data/image/' + img + '.cqimg'
+    let imgData = fs.readFileSync(cqimg).toString()
+
+    const urlRegexp = /url=(.*)/
+    urlRegexp.test(imgData)
+
+    let imgUrl = RegExp.$1 //根据正则表达式获取到图片的url
+
+    let sauce = (await saucenao(imgUrl)).json,
+        results = []
+
+    sauce.results.forEach(res => {
+        if (res.header.similarity > config.sauceSimilarity) {
+            results.push({
+                sim: res.header.similarity,
+                url: res.data.ext_urls[0]
+            })
+        }
+    });
+
+    return results
+}
+utils.getSauced = getSauced
 
 module.exports = utils

@@ -212,6 +212,16 @@ Nyabot是一个 (**COC7版规则**的) TRPG用的 ~~(可是跑团的人都咕了
 - 职业
 - 阵营
 
+#### sauce
+```py
+.sauce 一张图
+```
+看到群友发~~涩~~图, 但是找不到出处?
+这里利用了著名的搜图网站[saucenao](https://saucenao.com/)进行搜图
+顺便利用了一下github上的一个开源项目[saucenao-node](https://github.com/stawberri/saucenao-node)
+会返回一个展示链接和相似度的列表, 并自动过滤掉相似度不够高的图片..
+**(会有些慢就是了www)**
+
 #### chat
 *(仅用于群聊)*
 (**测试功能** 目前仅在部分群开放..)

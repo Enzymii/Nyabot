@@ -7,6 +7,12 @@ const jrrpResult = require('./jrrp')
 const help = require('./help')
 // const fs = require('fs')
 const deck = require('./deck.json')
+const {
+    stringTranslate
+} = require('./utils')
+const {
+    cocSingle
+} = require('./response')
 
 const solveGeneralMsg = async (data, msg, name) => {
 
@@ -127,7 +133,6 @@ const solveGeneralMsg = async (data, msg, name) => {
 
                 }
             }
-            console.log(basic)
             return basic
         }
 
@@ -184,7 +189,7 @@ const solveGeneralMsg = async (data, msg, name) => {
             let tmp = parseInt(msg.params[0])
 
             //如果提供了X的话
-            if(tmp) {
+            if (tmp) {
                 diceNum = parseInt(msg.params[0])
                 reason = msg.params[1]
             } else {
@@ -211,8 +216,6 @@ const solveGeneralMsg = async (data, msg, name) => {
         if (msg.order === '.help') {
             //没有具体查询就返回主要的菜单
             if (!msg.params[0]) {
-                console.log(help[data.message_type])
-
                 return help.title + help.general +
                     help[data.message_type].toString() + help.text
             } else {
@@ -650,6 +653,30 @@ const solveGeneralMsg = async (data, msg, name) => {
                 'doDraw',
                 [name, msg.params[0], resString]
             )
+        }
+
+        //saucenao搜图
+        if (msg.order === '.sauce') {
+            let file = /\[cq:image,file=(.*?)[,\]]/.test(msg.params[0])
+            let img = RegExp.$1
+            if (!img) {
+                return utils.stringTranslate('errInvalidParam')
+            } else {
+                let sauced = await utils.getSauced(img)
+                if (sauced.length <= 0) { //如果没有找到
+                    return utils.stringTranslate('errNoSauce') +
+                        utils.stringTranslate('doSauce2')
+                } else {
+                    let resString = utils.stringTranslate('doSauce1')
+                    sauced.forEach(d => {
+                        resString += utils.stringTranslate('doSauce',
+                            [d.url, d.sim]
+                        )
+                    });
+                    resString += utils.stringTranslate('doSauce2')
+                    return resString
+                }
+            }
         }
     }
 

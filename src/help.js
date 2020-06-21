@@ -7,7 +7,7 @@ const helpText = {
 .kokodayo/kkdy ここだよ\n.coc/coc7 coc7th人物作成\n\
 .r 掷骰\n.rs 简化输出\n\.set 设置属性\n.en 技能成长\n\
 .sc SAN CHECK\n.rc 检定\n.help 显示帮助\n\.v/ver 查看版本信息\n\
-.draw 抽卡\n",
+.draw 抽卡\n\.sauce 搜图源\n",
     group: `.bot 控制${cf.botName}开关\n\
 .rh 暗骰\n.rhs 简化输出\n.chat 聊天功能(测试版)\n`,
     private: ".gset 设置群属性\n",
@@ -41,6 +41,7 @@ const helpText = {
 属性和数值请至少填写其中一个喵w~",
     help: "[指令] 查看指定功能的说明喵w~ (其实能看到这条肯定知道怎么用了喵w~)",
     draw: `牌堆名 [次数] 不要超过${cf.maxDraw}次喵w~ 目前支持的牌堆如下喵w~\n`,
+    sauce: "一张图 查找这张图片的原链接喵w~",
     //
     bot: `on/off 开启/关闭${cf.botName}`,
     rh: `[表达式/奖励骰(bX)/惩罚骰(pX)][掷骰原因] 暗骰,结果私聊发送\n\

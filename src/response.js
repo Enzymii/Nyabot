@@ -1,5 +1,8 @@
 //本来确实是写成json好一些的
 //但是json不能加注释QAQ
+
+const config = require("./config")
+
 //所以还是写成了js的形式~
 const response = {
     //以下所有$$都会被替换成骰娘的名字
@@ -22,6 +25,7 @@ const response = {
     errNoDeck: '$$这里并没有这个牌堆喵w~', //未找到牌堆
     errTooManyDraw: '1,2,3,... 太多了喵w~', //抽卡太多
     errOtherErr: '诶.. $$感觉哪里不太对喵w~', //其他错误
+    errNoSauce: '$$并没有想起来在哪里见过这张图呢喵w~\n', //saucenao失败
 
     //bot的状态(.bot消息)
     statOn: '$$在的喵w~',
@@ -46,6 +50,11 @@ const response = {
     doOhy: 'おはよう~ 新的一天就让$$来陪伴你喵w~',
     //晚安
     doOysm: 'おやすみなさい~ $$祝你做个好梦喵w~',
+    //saucenao的回复
+    doSauce1: '$$好像在这些地方见过这张图喵w:\n', //开头
+    doSauce: 'url:$0,\n相似度:$1%\n',
+    doSauce2: `[P.S. 相似度不大于${config.sauceSimilarity}%的就排除掉了喵w~]`, //结尾
+
     //人物作成
     doCoc7: '来看看$0的COC7版人物作成结果是什么喵w~\n',
     cocSingle: '外貌(APP): $0 体质(CON): $1 敏捷(DEX): $2\n\
