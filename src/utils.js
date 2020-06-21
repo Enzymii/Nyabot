@@ -519,6 +519,8 @@ utils.repeatWord = repeatWord
 //saucenao搜图功能
 //返回一个相似度大于阈值的列表
 const getSauced = async (img) => {
+    let im = img.split('.')
+    img = im[0].toUpperCase() + '.' + im[1]
     let cqimg = config.cqpath + '/data/image/' + img + '.cqimg'
     let imgData = fs.readFileSync(cqimg).toString()
 
