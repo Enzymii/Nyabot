@@ -3,7 +3,7 @@ const cf = require('./config')
 const helpText = {
     title: "操作菜单如下喵w~(参数请一定以**空格**分隔开喵w~):\n",
     general: ".hitokoto/htkt 一言\n.jrrp 今日人品\n\
-.ohy/.oysm 早/晚安\n\.muda/.ora むだ/オラ\n\
+.ohy/.oysm 早/晚安\n\.muda/.ora/.meow むだ/オラ/喵w~\n\
 .kokodayo/kkdy ここだよ\n.coc/coc7 coc7th人物作成\n\
 .r 掷骰\n.rs 简化输出\n\.set 设置属性\n.en 技能成长\n\
 .sc SAN CHECK\n.rc 检定\n.help 显示帮助\n\.v/ver 查看版本信息\n\
@@ -21,6 +21,7 @@ const helpText = {
     oysm: "无参数 お休みにゃw~",
     muda: `[次数] 输出指定次数むだ 默认1次 最多${cf.maxRepeatTimes}次`,
     ora: `[次数] 输出指定次数オラ 默认1次 最多${cf.maxRepeatTimes}次`,
+    meow: `[次数] 输出指定次数オラ 默认1次 最多${cf.maxRepeatTimes}次`,
     kokodayo: "无参数 输出こ～こ～だ～よ～☆",
     coc7: `[次数] coc7版人物作成 默认1次 最多${cf.maxCoc}次`,
     r: `[表达式/奖励骰(bX)/惩罚骰(pX)][掷骰原因] 掷骰.\n\

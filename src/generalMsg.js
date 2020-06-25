@@ -84,7 +84,8 @@ const solveGeneralMsg = async (data, msg, name) => {
 
         //muda ora
         if (msg.order === '.muda' ||
-            msg.order === '.ora') {
+            msg.order === '.ora'　||
+            msg.order === '.meow') {
             let ti = parseInt(msg.params[0])
             if (msg.params.length === 0) {
                 ti = 1
@@ -96,9 +97,11 @@ const solveGeneralMsg = async (data, msg, name) => {
 
             switch (msg.order) {
                 case '.muda':
-                    return utils.repeatWord('むだ', ti)
+                    return utils.repeatWord('無駄', ti)
                 case '.ora':
                     return utils.repeatWord('オラ', ti)
+                case '.meow':
+                    return utils.repeatWord('喵', ti) + 'w~'
             }
         }
 
