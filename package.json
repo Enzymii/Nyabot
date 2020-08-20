@@ -1,0 +1,27 @@
+{
+  "name": "nyanya",
+  "version": "2.0.2",
+  "description": "nyanya - not only a dice bot~",
+  "main": "index2.js",
+  "scripts": {
+    "nya": "node index2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "nyanya"
+  },
+  "keywords": [
+    "coolq",
+    "dice",
+    "bot"
+  ],
+  "author": "Enzymii",
+  "license": "ISC",
+  "dependencies": {
+    "cqhttp": "^1.2.0",
+    "file-type": "^14.6.2",
+    "jsdom": "^16.2.2",
+    "mongodb": "^3.4.1",
+    "saucenao": "0.0.2"
+  }
+}
