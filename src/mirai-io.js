@@ -145,10 +145,12 @@ class NyabotMirai {
                                         if (message.type == 'GroupMessage') {
                                             await this.sendGroupMessage(message.sender.group.id, [{
                                                 type: 'Plain',
-                                                text: `ImageUrl:${data.ext_urls}`,
+                                                text: `Origin Link:${data.ext_urls}\nAvailable At:${url}`,
                                             }])
                                         }
-                                    }
+                                    } else {
+					console.log(`Sauce: No Match Found for ${url}`);
+				    }
                                 }
                             }
                         }

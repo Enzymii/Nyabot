@@ -46,7 +46,7 @@ const solveGeneralMsg = async (data, msg, name) => {
         //但是感觉和其他骰娘算出来的jrrp相同的话更有说服力呢~
         //有那么多骰娘在役的话多半不会换API的吧~
         if (msg.order === '.jrrp') {
-            let jrrp = await utils.jrrp(data.user_id)
+            let jrrp = await utils.jrrp(data.sender.id)
             let translatedString = ''
 
             //如果获取jrrp失败的话= =

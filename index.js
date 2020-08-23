@@ -84,9 +84,9 @@ const NyabotMirai = require('./src/mirai-io');
 
 const main = async () => {
     let x = new NyabotMirai(
-        'localhost:8080',
-        'kafuuchino',
-        1430171293,
+        'localhost:7777',
+        'yzcisourredsun',
+        2490434826,
     );
 
     try {

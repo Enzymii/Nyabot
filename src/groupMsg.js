@@ -8,13 +8,15 @@ const solveGroupMsg = async (data, msg) => {
 
     //remove all operations of database...
 
-    let groupId = data.sender.group.id.toString(),
-        status = 'on' 
+    let groupId = data.sender.group.id.toString() 
 
     //随便初始化一下
     if (global[groupId] === undefined) {
-        global[groupId] = {}
+        global[groupId] = {
+			status: 'on'
+		}
     }
+
     //获取当前群的各种开关信息
     //找一找db里有没有被此群禁用
     // let res = await utils.dbWork.findData(groupId, 'bot', {
@@ -46,53 +48,61 @@ const solveGroupMsg = async (data, msg) => {
     console.log(data)
     name = data.sender.memberName
 
-    if (status === 'on') {
+    console.log(`bot is ${global[groupId].status}`);
+    if (global[groupId].status === 'on') {
         let generalResult = await generalMsg(data, msg, name)
         if (generalResult !== '') {
             return generalResult
         }
+    } else {
+	console.log("Bot is off!");
     }
 
     if (msg.type === 1) {
         //指令消息
 
         //bot的开关
-        // if (msg.order === '.bot') {
-        //     if (msg.params[0] === 'on') {
-        //         if (status === 'off') {
+        if (msg.order === '.bot') {
+             if (msg.params[0] === 'on') {
+                 if (global[groupId].status === 'off') {
         //             await utils.dbWork.delData(
         //                 groupId, 'bot', {
         //                     bot: 'off'
         //                 }
         //             )
-        //             return utils.stringTranslate(
-        //                 "statTurnOn"
-        //             )
-        //         } else {
-        //             return utils.stringTranslate(
-        //                 "statOn"
-        //             )
-        //         }
-        //     } else if (msg.params[0] === 'off') {
-        //         if (status === 'on') {
+                     global[groupId].status = 'on'
+					 console.log(`bot on in group ${groupId}`);
+                     return utils.stringTranslate(
+                         "statTurnOn"
+                     )
+                 } else {
+                     return utils.stringTranslate(
+                         "statOn"
+                     )
+                 }
+             } else if (msg.params[0] === 'off') {
+                 if (global[groupId].status === 'on') {
         //             await utils.dbWork.addData(
         //                 groupId, 'bot', {
         //                     bot: 'off'
         //                 }
         //             )
-        //             return utils.stringTranslate(
-        //                 "statTurnOff"
-        //             )
-        //         }
-        //     } else {
-        //         return status != 'on' ? '' :
-        //             utils.stringTranslate(
-        //                 "botHelp"
-        //             )
-        //     }
-        // }
+                     global[groupId].status = 'off'
+					console.log(`bot off in group ${groupId}`);
+                     return utils.stringTranslate(
+                         "statTurnOff"
+                     )
+                 }
+             } else {
+                 return global[groupId].status != 'on' ? '' :
+                     utils.stringTranslate(
+                         "botHelp"
+                     )
+             }
+         }
 
-        if (status !== 'on') return '' //这里咋写成!=了ww
+
+        if (global[groupId].status !== 'on') return '' //这里咋写成!=了ww
 
         if (msg.order === '.rh' || msg.order === '.rhs') {
 
@@ -270,7 +280,7 @@ const solveGroupMsg = async (data, msg) => {
         // }
 
     } else {
-        if (status !== 'on') return ''
+        if (global[groupId].status !== 'on') return ''
         if (msg.type === 2) {
             //@bot的消息
             return utils.stringTranslate("doAtBot")
