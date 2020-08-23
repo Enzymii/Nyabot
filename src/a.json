@@ -1,0 +1,33 @@
+{
+    "header": { "user_id": 0, "account_type": 0, "short_limit": "4", "long_limit": "100", "long_remaining": 97, "short_remaining": 3, "status": 0, "results_requested": "6", "index": { "0": { "status": 0, "parent_id": 0, "id": 0, "results": 6 }, "2": { "status": 0, "parent_id": 2, "id": 2, "results": 6 }, "5": { "status": 0, "parent_id": 5, "id": 5, "results": 6 }, "6": { "status": 0, "parent_id": 6, "id": 6, "results": 6 }, "8": { "status": 0, "parent_id": 8, "id": 8, "results": 6 }, "9": { "status": 0, "parent_id": 9, "id": 9, "results": 48 }, "10": { "status": 0, "parent_id": 10, "id": 10, "results": 6 }, "11": { "status": 0, "parent_id": 11, "id": 11, "results": 6 }, "12": { "status": 1, "parent_id": 9, "id": 12 }, "16": { "status": 0, "parent_id": 16, "id": 16, "results": 6 }, "18": { "status": 0, "parent_id": 18, "id": 18, "results": 6 }, "19": { "status": 0, "parent_id": 19, "id": 19, "results": 6 }, "20": { "status": 0, "parent_id": 20, "id": 20, "results": 6 }, "21": { "status": 0, "parent_id": 21, "id": 21, "results": 6 }, "22": { "status": 0, "parent_id": 22, "id": 22, "results": 6 }, "23": { "status": 0, "parent_id": 23, "id": 23, "results": 6 }, "24": { "status": 0, "parent_id": 24, "id": 24, "results": 6 }, "25": { "status": 1, "parent_id": 9, "id": 25 }, "26": { "status": 1, "parent_id": 9, "id": 26 }, "27": { "status": 1, "parent_id": 9, "id": 27 }, "28": { "status": 1, "parent_id": 9, "id": 28 }, "29": { "status": 1, "parent_id": 9, "id": 29 }, "30": { "status": 1, "parent_id": 9, "id": 30 }, "31": { "status": 0, "parent_id": 31, "id": 31, "results": 6 }, "32": { "status": 0, "parent_id": 32, "id": 32, "results": 6 }, "33": { "status": 0, "parent_id": 33, "id": 33, "results": 6 }, "34": { "status": 0, "parent_id": 34, "id": 34, "results": 6 }, "35": { "status": 0, "parent_id": 35, "id": 35, "results": 6 }, "36": { "status": 0, "parent_id": 36, "id": 36, "results": 6 }, "37": { "status": 0, "parent_id": 37, "id": 37, "results": 6 }, "38": { "status": 0, "parent_id": 38, "id": 38, "results": 6 }, "51": { "status": 0, "parent_id": 5, "id": 51, "results": 6 }, "52": { "status": 0, "parent_id": 5, "id": 52, "results": 6 }, "53": { "status": 0, "parent_id": 5, "id": 53, "results": 6 }, "211": { "status": 0, "parent_id": 21, "id": 211, "results": 6 }, "341": { "status": 0, "parent_id": 341, "id": 341, "results": 6 } }, "search_depth": "128", "minimum_similarity": 44.82, "query_image_display": "userdata/fobXNyum3.jpg.png", "query_image": "fobXNyum3.jpg", "results_returned": 6 },
+    "results": [{
+                "header": { "similarity": "96.37", "thumbnail": "https://img1.saucenao.com/res/pixiv/7747/77470709_p0_master1200.jpg?auth=I3dJHMG_YLHIUQ7QmD_7EA&exp=1598153710", "index_id": 5, "index_name": "Index #5: Pixiv Images - 77470709_p0_master1200.jpg" },
+                "data": {
+                    "ext_urls": ["https://www.pixiv.net/member_illust.php?mode=medium&illust_id=77470709"],
+                    "title": "ハロウィンキョウ
+                    カちゃん ","
+                    pixiv_id ":77470709,"
+                    member_name ":"
+                    あづみ一樹 ","
+                    member_id ":326359}},{"
+                    header ":{"
+                    similarity ":"
+                    94.03 ","
+                    thumbnail ":"
+                    https: //img3.saucenao.com/booru/9/c/9cbf5be4f40b89763b5416380601a3af_0.jpg","index_id":9,"index_name":"Index #9: Danbooru - 9cbf5be4f40b89763b5416380601a3af_0.jpg"},"data":{"ext_urls":["https://danbooru.donmai.us/post/show/3666668","https://gelbooru.com/index.php?page=post&s=view&id=4969912"],"danbooru_id":3666668,"gelbooru_id":4969912,"creator":"azumi kazuki","material":"princess connect!, princess connect! re:dive","characters":"hikawa kyoka","source":"https://i.pximg.net/img-original/img/2019/10/25/18/30/03/77470709"}},{"header":{"similarity":"43.82","thumbnail":"https://img1.saucenao.com/res/mangadex/681/681193/C25.jpg?auth=ESSi-yTcCCfuqADyPACjzg&exp=1598153710","index_id":37,"index_name":"Index #37: MangaDex - C25.jpg"},"data":{"ext_urls":["https://mangadex.org/chapter/681193/"],"md_id":681193,"source":"THE iDOLM@STER - Happy
+                        Ending(Doujinshi)
+                    ","
+                    part ":"
+                    ","
+                    artist ":"
+                    Sakayama Shinta ","
+                    author ":"
+                    Umemoto Seisaku Iinkai "}},{"
+                    header ":{"
+                    similarity ":"
+                    43.66 ","
+                    thumbnail ":"
+                    https: //img1.saucenao.com/res/mangadex/112/112628/x11.jpg?auth=1Ing7LF0daVUIeTsE38m_A&exp=1598153710","index_id":37,"index_name":"Index #37: MangaDex - x11.jpg"},"data":{"ext_urls":["https://mangadex.org/chapter/112628/","https://www.mangaupdates.com/series.html?id=138820","https://myanimelist.net/manga/100035/"],"md_id":112628,"mu_id":138820,"mal_id":100035,"source":"Witch Hat Atelier","part":" - Chapter 6","artist":"Shirahama Kamome","author":"Shirahama Kamome"}},{"header":{"similarity":"42.83","thumbnail":"https://img1.saucenao.com/res/pixiv/4931/manga/49310163_p4.jpg?auth=ErYLmJeiIW6IV_vxYox2AQ&exp=1598153710","index_id":5,"index_name":"Index #5: Pixiv Images - 49310163_p4.jpg"},"data":{"ext_urls":["https://www.pixiv.net/member_illust.php?mode=medium&illust_id=49310163"],"title":"作品集","pixiv_id":49310163,"member_name":"howchi728","member_id":13915093}},{"header":{"similarity":"43.53","thumbnail":"https://img1.saucenao.com/res/pixiv/6873/manga/68730195_p16.jpg?auth=O1ObWn7RMndmOHLSj0dokA&exp=1598153710","index_id":5,"index_name":"Index #5: Pixiv Images - 68730195_p16.jpg"},"data":{"ext_urls":["https://www.pixiv.net/member_illust.php?mode=medium&illust_id=68730195"],"title":"コンパスＬＯＧ①","pixiv_id":68730195,"memb
+                        er_name ":"
+                    ki某＠ コンパス沼 ","
+                    member_id ":14242293}}]}

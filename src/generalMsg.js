@@ -18,7 +18,7 @@ const solveGeneralMsg = async (data, msg, name) => {
 
     status = config.defaultSwitch
 
-    let dbName = data.message_type === 'group' ? data.group_id.toString() : 'default'
+    // let dbName = data.message_type === 'group' ? data.group_id.toString() : 'default'
 
     if (msg.type === 1) {
 
@@ -267,70 +267,70 @@ const solveGeneralMsg = async (data, msg, name) => {
         //关于属性的操作
         //添加 修改 无需操作名
         //删除 del 清空 clr 显示 show
-        if (msg.order === '.set') {
-            let property = await utils.prop.getProp(
-                dbName,
-                data.user_id
-            )
+        // if (msg.order === '.set') {
+        //     let property = await utils.prop.getProp(
+        //         dbName,
+        //         data.user_id
+        //     )
 
-            //显示已设置的属性
-            //可以指定显示若干 不指定则默认全部
-            if (msg.params[0] === 'show') {
-                let str = ''
+        //     //显示已设置的属性
+        //     //可以指定显示若干 不指定则默认全部
+        //     if (msg.params[0] === 'show') {
+        //         let str = ''
 
-                if (msg.params.length > 1) {
-                    for (let i = 1; i < msg.params.length; i++) {
-                        str += msg.params[i] + ': ' +
-                            property[msg.params[i]] + '\t'
-                    }
-                } else {
-                    if (!property || Object.keys(property).length < 3) {
-                        return utils.stringTranslate("propEmpty")
-                    }
-                    for (let i in property) {
-                        if (i != '_id' && i != 'user_id') {
-                            str += i + ': ' + property[i] + '\t'
-                        }
-                    }
-                }
+        //         if (msg.params.length > 1) {
+        //             for (let i = 1; i < msg.params.length; i++) {
+        //                 str += msg.params[i] + ': ' +
+        //                     property[msg.params[i]] + '\t'
+        //             }
+        //         } else {
+        //             if (!property || Object.keys(property).length < 3) {
+        //                 return utils.stringTranslate("propEmpty")
+        //             }
+        //             for (let i in property) {
+        //                 if (i != '_id' && i != 'user_id') {
+        //                     str += i + ': ' + property[i] + '\t'
+        //                 }
+        //             }
+        //         }
 
-                return utils.stringTranslate(
-                    "propShow",
-                    [str]
-                )
-            }
+        //         return utils.stringTranslate(
+        //             "propShow",
+        //             [str]
+        //         )
+        //     }
 
-            //删除若干指定属性
-            if (msg.params[0] === 'del') {
-                let propList = msg.params.slice(1)
-                if (propList.length <= 0) {
-                    //如果后面没有属性的话 mongodb会报错哒!
-                    return utils.stringTranslate("errInvalidParam")
-                }
+        //     //删除若干指定属性
+        //     if (msg.params[0] === 'del') {
+        //         let propList = msg.params.slice(1)
+        //         if (propList.length <= 0) {
+        //             //如果后面没有属性的话 mongodb会报错哒!
+        //             return utils.stringTranslate("errInvalidParam")
+        //         }
 
-                await utils.prop.delProp(dbName, data.user_id, propList)
+        //         await utils.prop.delProp(dbName, data.user_id, propList)
 
-                return utils.stringTranslate("propDel")
-            }
+        //         return utils.stringTranslate("propDel")
+        //     }
 
-            if (msg.params[0] === 'clr') {
-                await utils.prop.clrProp(dbName, data.user_id)
+        //     if (msg.params[0] === 'clr') {
+        //         await utils.prop.clrProp(dbName, data.user_id)
 
-                return utils.stringTranslate("propClr")
-            }
+        //         return utils.stringTranslate("propClr")
+        //     }
 
-            let p = msg.params.slice(0),
-                np = {}
-            if (p.length <= 0) {
-                //如果后面没有属性的话 mongodb会报错哒!
-                return utils.stringTranslate("errInvalidParam")
-            }
-            for (let i = 0; i < p.length; i += 2) {
-                np[p[i]] = p[i + 1]
-            }
-            await utils.prop.setProp(dbName, data.user_id, np)
-            return utils.stringTranslate("propSet")
-        }
+        //     let p = msg.params.slice(0),
+        //         np = {}
+        //     if (p.length <= 0) {
+        //         //如果后面没有属性的话 mongodb会报错哒!
+        //         return utils.stringTranslate("errInvalidParam")
+        //     }
+        //     for (let i = 0; i < p.length; i += 2) {
+        //         np[p[i]] = p[i + 1]
+        //     }
+        //     await utils.prop.setProp(dbName, data.user_id, np)
+        //     return utils.stringTranslate("propSet")
+        // }
 
         //增强检定(原来是enhance嘛→_→)
         //参数: .en [属性] [数值] [原因]
@@ -658,29 +658,31 @@ const solveGeneralMsg = async (data, msg, name) => {
             )
         }
 
+        //coolq消息格式和mirai不同 不想改了ww
+
         //saucenao搜图
-        if (msg.order === '.sauce') {
-            let file = /\[cq:image,file=(.*?)[,\]]/.test(msg.params[0])
-            let img = RegExp.$1
-            if (!img) {
-                return utils.stringTranslate('errInvalidParam')
-            } else {
-                let sauced = await utils.getSauced(img)
-                if (sauced.length <= 0) { //如果没有找到
-                    return utils.stringTranslate('errNoSauce') +
-                        utils.stringTranslate('doSauce2')
-                } else {
-                    let resString = utils.stringTranslate('doSauce1')
-                    sauced.forEach(d => {
-                        resString += utils.stringTranslate('doSauce',
-                            [d.url, d.sim]
-                        )
-                    });
-                    resString += utils.stringTranslate('doSauce2')
-                    return resString
-                }
-            }
-        }
+        // if (msg.order === '.sauce') {
+        //     let file = /\[cq:image,file=(.*?)[,\]]/.test(msg.params[0])
+        //     let img = RegExp.$1
+        //     if (!img) {
+        //         return utils.stringTranslate('errInvalidParam')
+        //     } else {
+        //         let sauced = await utils.getSauced(img)
+        //         if (sauced.length <= 0) { //如果没有找到
+        //             return utils.stringTranslate('errNoSauce') +
+        //                 utils.stringTranslate('doSauce2')
+        //         } else {
+        //             let resString = utils.stringTranslate('doSauce1')
+        //             sauced.forEach(d => {
+        //                 resString += utils.stringTranslate('doSauce',
+        //                     [d.url, d.sim]
+        //                 )
+        //             });
+        //             resString += utils.stringTranslate('doSauce2')
+        //             return resString
+        //         }
+        //     }
+        // }
     }
 
     return ''
