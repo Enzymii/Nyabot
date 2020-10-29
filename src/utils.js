@@ -2,6 +2,7 @@
 
 const http = require('http')
 const https = require('https')
+const axios = require('axios');
 const stack = require('./stack')
 const querystring = require('querystring')
 
@@ -14,6 +15,7 @@ const prop = require('./propWork')
 const response = require('./response')
 const rules = require('./rules')
 const fs = require('fs')
+const { resolve } = require('path')
 
 let utils = {}
 
@@ -466,6 +468,29 @@ const getHitokoto = async () => {
     return res
 }
 utils.getHitokoto = getHitokoto
+
+const getSetu = async (param) => {
+
+    let path = 'setu?r18=0&num=1';
+
+    if (param) {
+        path += `&keyword=${param}`
+    }
+
+    console.log('Getting Setu..')
+
+    const opt = {
+        path: path
+    }
+
+    let res = new Promise((resolve, reject) => {
+        let t = axios.default.get(`https://api.lolicon.app${path}`);
+        resolve(t);
+    })
+    res.catch(e => console.log(e));
+    return res;
+}
+utils.getSetu = getSetu;
 
 //JRRP
 const jrrp = async qq => {

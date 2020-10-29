@@ -84,7 +84,7 @@ const solveGeneralMsg = async (data, msg, name) => {
 
         //muda ora
         if (msg.order === '.muda' ||
-            msg.order === '.ora'　||
+            msg.order === '.ora' ||
             msg.order === '.meow') {
             let ti = parseInt(msg.params[0])
             if (msg.params.length === 0) {
@@ -683,6 +683,48 @@ const solveGeneralMsg = async (data, msg, name) => {
         //         }
         //     }
         // }
+
+        if (msg.order === '.setu') {
+
+            let param = msg.params[0];
+            if (param.indexOf('r18') != -1) {
+                return utils.stringTranslate('errNotH');
+            }
+            let setu = await utils.getSetu(param);
+
+            let setuData = setu.data;
+            let { code, data } = setuData;
+
+            switch (code) {
+                case 401:
+                    console.log('Illegal API Key!');
+                    return utils.stringTranslate('errSetuIllegal');
+                case 403:
+                    console.log('Illegal Operation!');
+                    return utils.stringTranslate('errSetuIllegal');
+                case 404:
+                    console.log('Not found with the keyword');
+                    return utils.stringTranslate('errSetuNotFound');
+                case 429:
+                    console.log('Reach the daily limit!');
+                    return utils.stringTranslate('errSetuLimited');
+                default: {
+                    console.log(data);
+                    let { pid, p, author, uid, title, url, tags } = data;
+                    return {
+                        txt: utils.stringTranslate('doSetu', [
+                            pid, 
+                            p, 
+                            author, 
+                            uid, 
+                            title,
+                            tags.toString()
+                        ]),
+                        img: url,
+                    }
+                }
+            }
+        }
     }
 
     return ''

@@ -27,6 +27,11 @@ const response = {
     errOtherErr: '诶.. $$感觉哪里不太对喵w~', //其他错误
     errNoSauce: '$$并没有想起来在哪里见过这张图呢喵w~\n', //saucenao失败
 
+    errSetuIllegal: '$$在找图的过程中遇到了一些麻烦喵w~', //API Key或者操作不合法
+    errSetuNotFound: '$$找不到符合这个条件的图片喵w~', //找不到符合条件的图片
+    errSetuLimited: '唔 $$不能找更多图了喵w~ 请解制一点喵w~', //达到每日限额
+    errNotH: 'H是不可以的喵w!!', //以r18作为参数
+    
     //bot的状态(.bot消息)
     statOn: '$$在的喵w~',
     statTurnOn: '$$来了喵w~',
@@ -54,6 +59,12 @@ const response = {
     doSauce1: '$$好像在这些地方见过这张图喵w:\n', //开头
     doSauce: 'url:$0,\n相似度:$1%\n',
     doSauce2: `[P.S. 相似度不大于${config.sauceSimilarity}%的就排除掉了喵w~]`, //结尾
+
+    doSetu: '$$这次找到了这张图喵w~\n\
+PID:$1(p$2)\n\
+Author:$3(UID:$4)\n\
+Title:$5\n\
+Tags:$6', //色图
 
     //人物作成
     doCoc7: '来看看$0的COC7版人物作成结果是什么喵w~\n',

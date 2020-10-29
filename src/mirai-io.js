@@ -77,14 +77,24 @@ class NyabotMirai {
             let response = await groupMsg(obj.data, utils.msgConvert(obj.msg));
             console.log(response, typeof response);
             if (typeof response === 'object') {
-                await this.sendGroupMessage(obj.data.sender.group.id, [{
-                    type: 'Plain',
-                    text: response.public,
-                }]);
-                await this.sendFriendMessage(obj.data.sender.id, [{
-                    type: 'Plain',
-                    text: response.private,
-                }]);
+                if (response.public) {
+                    await this.sendGroupMessage(obj.data.sender.group.id, [{
+                        type: 'Plain',
+                        text: response.public,
+                    }]);
+                    await this.sendFriendMessage(obj.data.sender.id, [{
+                        type: 'Plain',
+                        text: response.private,
+                    }]);
+                } else {
+                    await this.sendGroupMessage(obj.data.sender.group.id, [{
+                        type: 'Plain',
+                        text: response.text,
+                    }, {
+                        type: "Image",
+                        url: response.img,
+                    }]);
+                }
             } else {
                 if (response.length) {
                     await this.sendGroupMessage(obj.data.sender.group.id, [{
@@ -136,21 +146,21 @@ class NyabotMirai {
                                         msg: chain.text,
                                     });
                                 } else if (chain.type == 'Image') {
-                                    let { url } = chain;
-                                    let sauce = (await saucenao(url)).json;
-                                    // console.log(JSON.stringify(sauce));
-                                    let { results } = sauce
-                                    let { header, data } = results[0]
-                                    if (header.similarity > 90) {
-                                        if (message.type == 'GroupMessage') {
-                                            await this.sendGroupMessage(message.sender.group.id, [{
-                                                type: 'Plain',
-                                                text: `Origin Link:${data.ext_urls}\nAvailable At:${url}`,
-                                            }])
-                                        }
-                                    } else {
-					console.log(`Sauce: No Match Found for ${url}`);
-				    }
+                                    //                 let { url } = chain;
+                                    //                 let sauce = (await saucenao(url)).json;
+                                    //                 // console.log(JSON.stringify(sauce));
+                                    //                 let { results } = sauce
+                                    //                 let { header, data } = results[0]
+                                    //                 if (header.similarity > 90) {
+                                    //                     if (message.type == 'GroupMessage') {
+                                    //                         await this.sendGroupMessage(message.sender.group.id, [{
+                                    //                             type: 'Plain',
+                                    //                             text: `Origin Link:${data.ext_urls}\nAvailable At:${url}`,
+                                    //                         }])
+                                    //                     }
+                                    //                 } else {
+                                    // console.log(`Sauce: No Match Found for ${url}`);
+                                    // }
                                 }
                             }
                         }

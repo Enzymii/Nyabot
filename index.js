@@ -84,9 +84,9 @@ const NyabotMirai = require('./src/mirai-io');
 
 const main = async () => {
     let x = new NyabotMirai(
-        'localhost:7777',
-        'yzcisourredsun',
-        2490434826,
+        'localhost:port',
+        'Auth key of mirai-api-http',
+        'bot\'s qq',
     );
 
     try {
